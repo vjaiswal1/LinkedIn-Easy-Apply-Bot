@@ -1,27 +1,22 @@
-username: 
-password: 
+username: XXXXXX@gmail.com
+password: XXXXX
 
 positions:
-- Data Scientist
-- # Another position you want to search for
-- # A third position you want to search for
+  - java
+
 
 locations:
-- Remote
-- # A second location you want to search in 
+  - europe
+  - # A second location you want to search in
 
-# --------- Optional Parameters -------
-# uploads:
-#  Resume: # PATH TO Resume 
-#  Cover Letter: # PATH TO cover letter
-#  Photo: # PATH TO photo
-
-
-# output_filename:
-# - # PATH TO OUTPUT FILE (default output.csv)
-
-# blacklist:
-# - # Company names you want to ignore
-
-#blackListTitles:
-#- # Add job titles you want to ignore
+    #uploads:
+    #  Resume: /Users/vikasjaiswal/Vikas_Jaiswal_9_Years_Exp -pdf
+    #  Cover Letter: # PATH TO cover letter
+    #  Photo: # PATH TO photo
+    ## Note file_key:file_paths contained inside the uploads section should be writted without a dash ('-')
+    #
+    #output_filename:
+    #  - # PATH TO OUTPUT FILE (default output.csv)
+    #
+  #blacklist:
+#  - # Company names you want to ignore

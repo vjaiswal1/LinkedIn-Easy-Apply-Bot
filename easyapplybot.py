@@ -147,8 +147,17 @@ class EasyApplyBot:
 
         self.browser.set_window_position(0, 0)
         self.browser.maximize_window()
+
         self.browser, _ = self.next_jobs_page(position, location, jobs_per_page)
         log.info("Looking for jobs.. Please wait..")
+
+
+#         self.browser.find_element_by_css_selector("button[aria-label='Date Posted filter. Clicking this button displays all Date Posted filter options.']").click()
+#
+#         element = self.browser.find_element_by_css_selector("input[type='radio'][name='Past 24 hours']")
+#         self.browser.execute_script("arguments[0].click();", element)
+#         element2 = self.browser.fidnz("button[data-control-name='filter_show_results']")
+#         self.browser.execute_script("arguments[0].click();", element2)
 
         while time.time() - start_time < self.MAX_SEARCH_TIME:
             try:
@@ -240,7 +249,7 @@ class EasyApplyBot:
                     if count_application != 0 and count_application % 20 == 0:
                         sleepTime = random.randint(500, 900)
                         log.info(f"""********count_application: {count_application}************\n\n
-                                    Time for a nap - see you in:{int(sleepTime / 60)} min
+                                    Time for a nap - see you in:{int(sleepTime / 240)} min
                                 ****************************************\n\n""")
                         time.sleep(sleepTime)
 
@@ -293,6 +302,7 @@ class EasyApplyBot:
             EasyApplyButton = False
 
         return EasyApplyButton
+
 
     def send_resume(self):
         def is_present(button_locator):
@@ -376,6 +386,8 @@ class EasyApplyBot:
 
     def load_page(self, sleep=1):
         scroll_page = 0
+
+
         while scroll_page < 4000:
             self.browser.execute_script("window.scrollTo(0," + str(scroll_page) + " );")
             scroll_page += 200
@@ -401,7 +413,7 @@ class EasyApplyBot:
     def next_jobs_page(self, position, location, jobs_per_page):
         self.browser.get(
             "https://www.linkedin.com/jobs/search/?f_LF=f_AL&keywords=" +
-            position + location + "&start=" + str(jobs_per_page))
+            position + location + "&start=" + str(jobs_per_page) +"&sortBy=DD" )
         self.avoid_lock()
         log.info("Lock avoided.")
         self.load_page()
